@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSQL_FOR_IS_20_03.SQL_Service", "AutoSQL_FOR_IS_20_03.SQL_Service\AutoSQL_FOR_IS_20_03.SQL_Service.csproj", "{EB775BE2-D1AD-4695-B3F2-C9117CEAE5EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSQL_FOR_IS_20_03.Console1CreatUser", "AutoSQL_FOR_IS_20_03.Console1CreatUser\AutoSQL_FOR_IS_20_03.Console1CreatUser.csproj", "{3F0AC62E-E64C-4707-82ED-1C8CBDE6237E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSQL_FOR_IS_20_03.BackAppConsole", "AutoSQL_FOR_IS_20_03.BackAppConsole\AutoSQL_FOR_IS_20_03.BackAppConsole.csproj", "{5DD10458-4A93-4418-8347-3E27CC7328A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB775BE2-D1AD-4695-B3F2-C9117CEAE5EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB775BE2-D1AD-4695-B3F2-C9117CEAE5EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB775BE2-D1AD-4695-B3F2-C9117CEAE5EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB775BE2-D1AD-4695-B3F2-C9117CEAE5EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0AC62E-E64C-4707-82ED-1C8CBDE6237E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0AC62E-E64C-4707-82ED-1C8CBDE6237E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0AC62E-E64C-4707-82ED-1C8CBDE6237E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0AC62E-E64C-4707-82ED-1C8CBDE6237E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD10458-4A93-4418-8347-3E27CC7328A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD10458-4A93-4418-8347-3E27CC7328A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD10458-4A93-4418-8347-3E27CC7328A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD10458-4A93-4418-8347-3E27CC7328A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CC3086B-AE0C-431D-BB51-229AEB2D6A0F}
+	EndGlobalSection
+EndGlobal
