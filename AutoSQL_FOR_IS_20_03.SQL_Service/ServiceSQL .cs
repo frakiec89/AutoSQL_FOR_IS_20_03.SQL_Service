@@ -10,7 +10,6 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
     /// </summary>
     public class ServiceSQL
     {
-
         public static void CreateUser(string user_name, string defDb , string pasword, string cs)
         {
             SqlConnection myConn = new SqlConnection(cs);
@@ -80,7 +79,7 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
         /// </summary>
         /// <param name="name"></param>
         /// <param name="cs"></param>
-        public static string BackupDateBase(string bd_name, string cs)
+        public static string BackupDateBase(string bd_name, string dir , string cs)
         {
             SqlConnection myConn = new SqlConnection(cs);
 
@@ -88,18 +87,16 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
             var nameFale = $"{bd_name}-{data.Year}_{data.Month}_{data.Day}_{data.Hour}_{data.Minute}_{data.Second}.bac";
 
             var str = $"BACKUP DATABASE [{bd_name}] " +
-                @$"TO  DISK = N'C:\Users\SA\{nameFale}' WITH NOFORMAT, NOINIT, " +
+                @$"TO  DISK = N'{dir}\{nameFale}' WITH NOFORMAT, NOINIT, " +
                 $" NAME = N'{nameFale}', " +
                 $"SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
-
-
 
             SqlCommand myCommand = new SqlCommand(str, myConn);
             try
             {
                 myConn.Open();
                 myCommand.ExecuteNonQuery();
-                return @$"Backup создался в директории -> C:\Users\SA -> название файла ->  {nameFale}";
+                return @$"Backup создался в директории -> {dir} -> название файла ->  {nameFale}";
             }
             catch (System.Exception ex)
             {
@@ -114,6 +111,105 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
             }
         }
 
+        public static void CreteTableUser(string nameDb, string cs)
+        {
+            SqlConnection myConn = new SqlConnection(cs);
+            
+            var str = $"USE {nameDb}\n " +
+                $"CREATE TABLE [dbo].[User] " +
+                $"(UserId int Identity(1,1), " +
+                $"Name nvarchar(50) not null, " +
+                $"Login nvarchar(50) not null, " +
+                $"Password nvarchar(50) not null) ";
+
+            SqlCommand myCommand = new SqlCommand(str, myConn);
+            try
+            {
+                myConn.Open();
+                myCommand.ExecuteNonQuery();
+                
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (myConn.State == ConnectionState.Open)
+                {
+                    myConn.Close();
+                }
+            }
+        }
+
+        public static void AddUsersForTableUser(string nameDb, string cs , User  user)
+        {
+            SqlConnection myConn = new SqlConnection(cs);
+
+            var str = $"USE {nameDb}\n " +
+                $@"INSERT INTO [dbo].[User] (Name ,Login, Password ) VALUES ( '{user.Name}', 
+                '{user.Login}', '{user.Password}')";
+                SqlCommand myCommand = new SqlCommand(str, myConn);
+            try
+            {
+                myConn.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (myConn.State == ConnectionState.Open)
+                {
+                    myConn.Close();
+                }
+            }
+        }
+
+
+        public static List<string>  GetUsers (string  nameDB , string cs)
+        {
+            List<string> strings = new List<string>();  
+
+            SqlConnection myConn = new SqlConnection(cs);
+
+            var str = $@"SELECT TOP (1000) [UserId]
+                        ,[Name]
+                        ,[Login]
+                        ,[Password]
+                        FROM [{nameDB}].[dbo].[User]";
+
+            SqlCommand myCommand = new SqlCommand(str, myConn);
+            try
+            {
+                myConn.Open();
+                SqlDataReader reader = myCommand.ExecuteReader();
+                if (reader!=null) 
+                { 
+                    while (reader.Read())
+                    {
+                        strings.Add($"{reader.GetValue(0)}" +
+                            $" {reader.GetValue(1)}" +
+                            $" {reader.GetValue(2)}" +
+                            $" {reader.GetValue(3)}");
+                    }
+                }
+                return strings; 
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (myConn.State == ConnectionState.Open)
+                {
+                    myConn.Close();
+                }
+            }
+        }
 
     }
 }

@@ -24,7 +24,9 @@ void Back()
 
     string namaDb = Console.ReadLine();
 
-    Console.WriteLine(ServiceSQL.BackupDateBase(namaDb, cs));
+    Console.WriteLine("Введите директорию куда сдеалть  бек  апп");
+    string dir = Console.ReadLine();    
+    Console.WriteLine(ServiceSQL.BackupDateBase(namaDb, dir , cs ));
     
 }
 

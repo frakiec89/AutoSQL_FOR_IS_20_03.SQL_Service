@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AutoSQL_FOR_IS_20_03.SQL_Service;
-using System.Security.AccessControl;
 while (true)
 {
     try
