@@ -148,7 +148,7 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
 
             var str = $"USE {nameDb}\n " +
                 $@"INSERT INTO [{nameDb}].[dbo].[User] (Name ,Login, Password ) VALUES ( '{user.Name}', 
-                '{user.Login}', '{user.pas}')";
+                '{user.Login}', '{user.pasForDB}')";
                 SqlCommand myCommand = new SqlCommand(str, myConn);
             try
             {
@@ -193,7 +193,7 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
                         User us = new User();
                         us.Name =  reader.GetValue(1).ToString();
                         us.Login = reader.GetValue(2).ToString();
-                        us.pas = reader.GetValue(3).ToString();
+                        us.pasForDB = reader.GetValue(3).ToString();
                         strings.Add(us);
                     }
                 }

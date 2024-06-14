@@ -4,8 +4,8 @@
     {
         public string Name { get; set; }
         public string Login { get; set; }
-        internal string pas; 
-        public string Password { get => GetPass(pas); set=> pas = SetPass(value); }
+        internal string pasForDB; 
+        public string Password { get => GetPass(pasForDB); set=> pasForDB = SetPass(value); }
 
         private string SetPass(string value)
         {
