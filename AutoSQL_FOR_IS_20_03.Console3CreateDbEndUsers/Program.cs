@@ -59,11 +59,11 @@ void Metod()
 
 string GetConnetionString()
 {
-    Console.WriteLine("Введите адресс сервера");
+    //Console.WriteLine("Введите адресс сервера");
 
-    // string adress = "(localdb)\\mssqllocaldb"; //Console.ReadLine();
+     string adress = "(localdb)\\mssqllocaldb"; //Console.ReadLine();
 
-    string adress = Console.ReadLine();
+     // string adress = Console.ReadLine();
 
 
     Console.WriteLine("Введите логин для SA");

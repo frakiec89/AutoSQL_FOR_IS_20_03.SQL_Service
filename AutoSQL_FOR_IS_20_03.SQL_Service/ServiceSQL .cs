@@ -147,8 +147,8 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
             SqlConnection myConn = new SqlConnection(cs);
 
             var str = $"USE {nameDb}\n " +
-                $@"INSERT INTO [dbo].[User] (Name ,Login, Password ) VALUES ( '{user.Name}', 
-                '{user.Login}', '{user.Password}')";
+                $@"INSERT INTO [{nameDb}].[dbo].[User] (Name ,Login, Password ) VALUES ( '{user.Name}', 
+                '{user.Login}', '{user.pas}')";
                 SqlCommand myCommand = new SqlCommand(str, myConn);
             try
             {
@@ -169,9 +169,9 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
         }
 
 
-        public static List<string>  GetUsers (string  nameDB , string cs)
+        public static List<User>  GetUsers (string  nameDB , string cs)
         {
-            List<string> strings = new List<string>();  
+            List<User> strings = new List<User>();  
 
             SqlConnection myConn = new SqlConnection(cs);
 
@@ -190,13 +190,14 @@ namespace AutoSQL_FOR_IS_20_03.SQL_Service
                 { 
                     while (reader.Read())
                     {
-                        strings.Add($"{reader.GetValue(0)}" +
-                            $" {reader.GetValue(1)}" +
-                            $" {reader.GetValue(2)}" +
-                            $" {reader.GetValue(3)}");
+                        User us = new User();
+                        us.Name =  reader.GetValue(1).ToString();
+                        us.Login = reader.GetValue(2).ToString();
+                        us.pas = reader.GetValue(3).ToString();
+                        strings.Add(us);
                     }
                 }
-                return strings; 
+                return strings;
             }
             catch (System.Exception ex)
             {
